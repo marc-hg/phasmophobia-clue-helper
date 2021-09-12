@@ -1,0 +1,79 @@
+<div class="card">
+  <p-dataView [value]="filteredGhosts" layout="grid">
+    <ng-template pTemplate="header">
+      <div style="font-size: 140%; text-align: center">List of ghosts</div>
+      <br />
+      <div style="text-align: center">Check your clues</div>
+      <br />
+      <!-- CLUES -->
+      <div class="p-grid">
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.ghost_orb" binary="true" inputId="ghost_orb" (onChange)="onChangeClue()">
+          </p-checkbox>
+          <label for="ghost_orb">Ghost orb</label>
+        </div>
+
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.ghost_writting" binary="true" inputId="ghost_writting"
+            (onChange)="onChangeClue()"></p-checkbox>
+          <label for="ghost_writting">Ghost writting</label>
+        </div>
+
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.fingerprints" binary="true" inputId="fingerprints" (onChange)="onChangeClue()">
+          </p-checkbox>
+          <label for="fingerprints">Fingerprints</label>
+        </div>
+
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.emf_level_5" binary="true" inputId="emf_level_5" (onChange)="onChangeClue()">
+          </p-checkbox>
+          <label for="emf_level_5">EMF level 5</label>
+        </div>
+
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.freezing_temperature" binary="true" inputId="freezing_temperature"
+            (onChange)="onChangeClue()"></p-checkbox>
+          <label for="freezing_temperature">Freezing temperatures</label>
+        </div>
+        <div class="p-col p-field-checkbox">
+          <p-checkbox [(ngModel)]="clues.spirit_box" binary="true" inputId="spirit_box" (onChange)="onChangeClue()">
+          </p-checkbox>
+          <label for="spirit_box">Spirit box</label>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template let-ghost pTemplate="gridItem">
+      <div class="p-col-12 p-md-4">
+        <div class="product-grid-item card">
+          <div class="center bigger bold">
+            <div>
+              <span>{{ ghost.name | titlecase }}</span>
+            </div>
+          </div>
+          <br />
+          <div class="center clue_color">
+            <em>{{ ghostToClues(ghost) }}</em>
+          </div>
+          <div class="product-grid-item-content">
+            <img [src]="ghost.img_url" [alt]="ghost.name" class="myImg" />
+            <div class="product-description bold green">
+              {{ ghost.weakness }}
+            </div>
+            <div class="product-description bold red">
+              {{ ghost.strength }}
+            </div>
+          </div>
+          <div class="product-grid-item-bottom">
+            <div>{{ ghost.description }}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- <p-footer>
+      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+    </p-footer> -->
+  </p-dataView>
+</div>
