@@ -49,21 +49,22 @@ export class HomeComponent implements OnInit {
   }
 
   ghostToClues(ghost: Ghost) {
-    let clues = '';
-    clues += ghost.spirit_box && !this.clues.spirit_box ? 'Spirit box, ' : '';
-    clues +=
-      ghost.fingerprints && !this.clues.fingerprints ? 'Fingerprints, ' : '';
-    clues +=
-      ghost.emf_level_5 && !this.clues.emf_level_5 ? 'EMF level 5, ' : '';
-    clues +=
-      ghost.freezing_temperature && !this.clues.freezing_temperature
-        ? 'Freezing temperature, '
-        : '';
-    clues += ghost.ghost_orb && !this.clues.ghost_orb ? 'Ghost orb, ' : '';
-    clues +=
-      ghost.ghost_writting && !this.clues.ghost_writting
-        ? 'Ghost writting, '
-        : '';
-    return clues.slice(0, -2);
+    const clue_dict = {
+      spirit_box: 'Spirit box',
+      fingerprints: 'Fingerprints',
+      freezing_temperature: 'Freezing temperature',
+      ghost_writting: 'Ghost writting',
+      emf_level_5: 'EMF level 5',
+      ghost_orb: 'Ghost orb',
+    };
+
+    const validKeys: string[] = Object.keys(ghost).filter((key: string) => {
+      return key in clue_dict;
+    });
+    const validKeysValues: string[] = validKeys.map(
+      (key: string) => clue_dict[key]
+    );
+
+    return validKeysValues;
   }
 }

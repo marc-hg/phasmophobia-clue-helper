@@ -54,7 +54,7 @@
           </div>
           <br />
           <div class="center clue_color">
-            <em>{{ ghostToClues(ghost) }}</em>
+            <em>{{ ghostToClues(ghost) | arrayToString}}</em>
           </div>
           <div class="product-grid-item-content">
             <img [src]="ghost.img_url" [alt]="ghost.name" class="myImg" />

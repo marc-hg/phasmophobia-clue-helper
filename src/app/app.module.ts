@@ -15,9 +15,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { PrimengModule } from './primeng.module';
 import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavigationComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavigationComponent,
+    ArrayToStringPipe,
+  ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -29,7 +35,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     LayoutModule,
     PrimengModule,
     MaterialModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
